@@ -1,8 +1,14 @@
 <script setup>
 import HelloWorld from "./components/HelloWorld.vue";
 import TheWelcome from "./components/TheWelcome.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 const count = ref(0);
+function increment() {
+  count.value++;
+}
+onMounted(() => {
+  console.log(`The initial count value is ${count.value}.`);
+});
 </script>
 
 <template>
@@ -26,7 +32,7 @@ const count = ref(0);
       <h2>Vue State</h2>
       <span>Current Count :{{ count }} </span>
     </section>
-    <button @click="count++">Increase count</button>
+    <button @click="increment">Increase count</button>
   </main>
 </template>
 
